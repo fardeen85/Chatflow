@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigategraph"
+    app:startDestination="@id/signin">
+
+    <fragment
+        android:id="@+id/signin"
+        android:name="com.example.chatflow.Signin"
+        android:label="fragment_signin"
+        tools:layout="@layout/fragment_signin" >
+        <action
+            android:id="@+id/action_signin_to_signup"
+            app:destination="@id/signup" />
+        <action
+            android:id="@+id/action_signin_to_participants"
+            app:destination="@id/participants" />
+        <action
+            android:id="@+id/action_signin_to_participants2"
+            app:destination="@id/participants" />
+    </fragment>
+    <fragment
+        android:id="@+id/signup"
+        android:name="com.example.chatflow.Signup"
+        android:label="fragment_signup"
+        tools:layout="@layout/fragment_signup" >
+        <action
+            android:id="@+id/action_signup_to_signin"
+            app:destination="@id/signin" />
+    </fragment>
+    <fragment
+        android:id="@+id/participants"
+        android:name="com.example.chatflow.Participants"
+        android:label="fragment_participants"
+        tools:layout="@layout/fragment_participants" >
+
+        <argument
+            android:name="chatmodel"
+            app:argType="com.example.chatflow.Chatmodel" />
+        <action
+            android:id="@+id/action_participants_to_fragmentChat"
+            app:destination="@id/fragmentChat" />
+        <action
+            android:id="@+id/action_participants_to_signin"
+            app:destination="@id/signin" />
+        <action
+            android:id="@+id/action_participants_to_users"
+            app:destination="@id/users" />
+
+    </fragment>
+    <fragment
+        android:id="@+id/fragmentChat"
+        android:name="com.example.chatflow.FragmentChat"
+        android:label="fragment_chat"
+        tools:layout="@layout/fragment_chat" >
+        <action
+            android:id="@+id/action_fragmentChat_to_participants"
+            app:destination="@id/participants" />
+        <argument
+            android:name="cid"
+            app:argType="string" />
+    </fragment>
+    <fragment
+        android:id="@+id/users"
+        android:name="com.example.chatflow.Users"
+        android:label="fragment_users"
+        tools:layout="@layout/fragment_users" />
+</navigation>
